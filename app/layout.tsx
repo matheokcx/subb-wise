@@ -11,8 +11,10 @@ export const metadata = {
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="fr">
-      <body className="p-8">
-        {children}
+      <body className="w-screnn h-screen bg-[#f8f9fa]">
+        <main className='w-full h-full'>
+          {children}
+        </main>
       </body>
     </html>
   );

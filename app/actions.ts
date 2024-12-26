@@ -139,4 +139,5 @@ export async function deleteAbonnement(formData: FormData) {
   const idAbonnement = await formData.get('idAbonnement');
   const idUser = (await client.auth.getUser()).data.user?.id;
   const { data, error } = await client.from('abonnes').delete().eq('iduser', idUser).eq('idabonnement', idAbonnement);
+  redirect(`/dashboard`)
 }

@@ -1,3 +1,4 @@
+import { deleteAbonnement } from "@/app/actions";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import React from "react";
@@ -15,6 +16,10 @@ export default async function page({ params, }: { params: Promise<{ idAbonne: st
                 <img src={"/" + abonnement.image} alt="Illustration de l'abonnement" className='rounded-xl' />
                 <h2 className='text-xl font-bold'>{abonnement.nom}</h2>
                 <p>${abonnement.mensualite} | {abonnement.categorie}</p>
+                <form action={deleteAbonnement} className='w-1/2'>
+                    <input type='hidden' value={abonnement.id} name='idAbonnement' />
+                    <button type='submit' className='bg-red-400 w-full h-12 rounded-xl text-white font-bold'>Supprimer</button>
+                </form>
             </div>
         </>
     );

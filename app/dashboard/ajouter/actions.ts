@@ -1,6 +1,26 @@
 'use server'
 
 import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
+
+export async function getCategories() {
+    const client = await createClient();
+    const { data, error } = await client.from('abonnements').select('categorie');
+
+    if (error) return [];
+
+    const uniqueCategories = Array.from(new Set(data?.map((item) => item.categorie)));
+    return uniqueCategories;
+}
+
+export async function getAbonnements(cat: string) {
+    const client = await createClient();
+    const { data, error } = await client.from('abonnements').select('nom').eq('categorie', cat);
+
+    if (error) return [];
+
+    return data;
+}
 
 export async function addAbonne(formData: FormData) {
     const nom = formData.get('nom');
@@ -17,23 +37,6 @@ export async function addAbonne(formData: FormData) {
         idabonnement: idAbonnement,
         date_inscription: dateInscription
     }]);
-}
 
-export async function getCategories() {
-    const client = await createClient();
-    const { data, error } = await client.from('abonnements').select('categorie');
-
-    if (error) return [];
-
-    const uniqueCategories = Array.from(new Set(data?.map((item) => item.categorie)));
-    return uniqueCategories;
-}
-
-export async function getAbonnements(cat: string) {
-    const client = await createClient();
-    const { data, error } = await client.from('abonnements').select().eq('categorie', cat);
-
-    if (error) return [];
-
-    return data;
+    redirect(`/dashboard`)
 }
