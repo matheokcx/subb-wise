@@ -1,6 +1,5 @@
 import { createClient } from "@/utils/supabase/server";
 import Abonnement from "../composants/Abonnement";
-import Link from "next/link";
 import NavBar from "../composants/NavBar";
 
 export default async function page() {

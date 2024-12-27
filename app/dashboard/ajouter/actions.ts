@@ -1,6 +1,11 @@
 'use server'
 
 import { createClient } from "@/utils/supabase/server";
+
+type Abonnement = {
+    nom: string;
+};
+
 import { redirect } from "next/navigation";
 
 export async function getCategories() {
@@ -39,4 +44,14 @@ export async function addAbonne(formData: FormData) {
     }]);
 
     redirect(`/dashboard`)
+}
+
+export async function abonnementsUtilisateur() {
+    const client = await createClient();
+    const user = (await client.auth.getUser()).data.user;
+    const { data: abonnes, error } = await client.from('abonnes').select('idabonnement').eq('iduser', user?.id);
+    const ids = abonnes?.map((e: any) => e.idabonnement);
+    if (!ids) return [];
+    const { data: abonnements } = await client.from('abonnements').select().in('id', ids);
+    return abonnements;
 }
