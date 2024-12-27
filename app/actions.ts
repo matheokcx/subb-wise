@@ -53,7 +53,7 @@ export const signInAction = async (formData: FormData) => {
     return encodedRedirect("error", "/sign-in", error.message);
   }
 
-  return redirect("/protected");
+  return redirect("/dashboard");
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {
@@ -133,10 +133,10 @@ export const signOutAction = async () => {
   return redirect("/sign-in");
 };
 
-
 export async function deleteAbonnement(formData: FormData) {
   const client = await createClient();
   const idAbonnement = await formData.get('idAbonnement');
   const idUser = (await client.auth.getUser()).data.user?.id;
   const { data, error } = await client.from('abonnes').delete().eq('iduser', idUser).eq('idabonnement', idAbonnement);
+  redirect(`/dashboard`)
 }
