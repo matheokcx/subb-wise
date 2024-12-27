@@ -1,4 +1,5 @@
 import { deleteAbonnement } from "@/app/actions";
+import BackButton from "@/app/composants/BackButton";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import React from "react";
@@ -11,7 +12,7 @@ export default async function page({ params, }: { params: Promise<{ idAbonne: st
 
     return (
         <>
-            <button className='w-1/3 md:w-1/12 h-12 rounded-xl bg-black text-white font-bold absolute top-8 left-8 transition-all hover:-translate-x-2'><Link href='/dashboard'>Retour</Link></button>
+            <BackButton />
             <div className="w-full h-full px-8 py-4 flex flex-col gap-16 justify-center items-center">
                 <img src={"/" + abonnement.image} alt="Illustration de l'abonnement" className='rounded-xl' />
                 <h2 className='text-2xl font-extrabold'>{abonnement.nom}</h2>
