@@ -17,7 +17,7 @@
 </p>
 <br/>
 
-## Features (test)
+## Features (test):
 
 - Works across the entire [Next.js](https://nextjs.org) stack
   - App Router
