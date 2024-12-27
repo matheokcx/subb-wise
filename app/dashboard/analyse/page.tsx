@@ -77,6 +77,6 @@ export default function Page() {
             <div className='w-1/4'>
                 <canvas ref={canvasRef}></canvas>
             </div>
-        </div>
+        </div >
     );
 }
