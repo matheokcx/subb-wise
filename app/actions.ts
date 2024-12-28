@@ -140,3 +140,13 @@ export async function deleteAbonnement(formData: FormData) {
   const { data, error } = await client.from('abonnes').delete().eq('iduser', idUser).eq('idabonnement', idAbonnement);
   redirect(`/dashboard`)
 }
+
+export async function getCurrentUser() {
+  const client = await createClient();
+  const utilisateur = (await client.auth.getUser()).data.user;
+  return utilisateur;
+}
+
+export async function cancelAbonnement(formData: FormData) {
+
+}
