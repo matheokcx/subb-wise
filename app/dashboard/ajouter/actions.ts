@@ -2,10 +2,6 @@
 
 import { createClient } from "@/utils/supabase/server";
 
-type Abonnement = {
-    nom: string;
-};
-
 import { redirect } from "next/navigation";
 
 export async function getCategories() {

@@ -10,11 +10,11 @@ export default async function page() {
     return (
         <>
             <NavBar />
-            <div className='w-full h-5/6 pt-16 px-8'>
-                <div className='flex flex-wrap justify-center gap-16'>
+            <main className='w-full h-5/6 pt-20 px-8'>
+                <section className='flex flex-wrap justify-center gap-16'>
                     {abonnements?.map((e: any) => <Abonnement key={e.idabonnement} idAbonnement={e.idabonnement} />)}
-                </div>
-            </div>
+                </section>
+            </main>
         </>
     );
 }

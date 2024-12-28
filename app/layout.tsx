@@ -20,9 +20,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="fr">
       <body className={"w-screnn h-screen bg-[#f8f9fa] " + poppins.className}>
-        <main className='w-full h-full'>
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );

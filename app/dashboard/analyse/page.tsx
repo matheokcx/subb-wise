@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import { abonnementsUtilisateur } from '../ajouter/actions';
-import Link from 'next/link';
 import BackButton from '@/app/composants/BackButton';
 
 type Abonnement = {
